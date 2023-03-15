@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script language="Javascript">
+      var g_bSwitch = false; //페이지 오픈시 물어보기 설정값.[ture:onload시 물어봄.]
+
+      if (g_bSwitch) window.onload = fnIconCreate;
+
+      function fnIconCreate() {
+        if (confirm("바탕화면에 바로가기 아이콘을 만드시겠습니까?")) {
+          var WshShell = new ActiveXObject("WScript.Shell");
+          Desktoptemp = WshShell.Specialfolders("Desktop"); //path
+
+          var sIconNm = "TEST"; //바탕 화면에 생성될 아이콘 명.
+          var sName = WshShell.CreateShortcut(
+            Desktoptemp + "\\" + sIconNm + ".URL"
+          );
+          sName.TargetPath = "https://mcnsports.co.kr";
+          sName.Save();
+        }김범준김범준김범준김범준김범준김범준김범준김범준
+      }
+    </script>
+    <link rel="shortcuticon" href="images/naver.ico" />
+    <!-- 네이버 검색어 : 파비콘 참조 -->
+  </head>
+  <body>
+    <script type="text/javascript">
+      if (!g_bSwitch)
+        document.write(
+          "<input type='button' value='바탕화면 아이콘생성' onclick='fnIconCreate();'>"
+        );
+    </script>
+  </body>
+</html>
